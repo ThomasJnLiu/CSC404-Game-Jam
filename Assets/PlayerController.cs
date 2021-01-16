@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject respawnPoint;
 
     public GameObject plat1, plat2, plat3;
+    
+    public GameManager GameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
         SetInactive();
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -72,6 +75,16 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other){           
         if(other.gameObject.tag == "DeathZone"){
             tr.position = respawnPoint.transform.position;
-        } 
+        }
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.name == "Sphere")
+        {
+            Destroy(collision.collider.gameObject);
+            GameManager.UpdateScore();
+        }
+        
     }
 }
