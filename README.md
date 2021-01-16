@@ -1,7 +1,7 @@
 # CSC404-Game-Jam
 Unity project for the 6-hour CSC404 Game Jam 1. A short 2.5D platforming game about getting to your lost space dog.
 
-Game link: [thomasjnliu.github.io/CSC404-Game-Jam](thomasjnliu.github.io/CSC404-Game-Jam)
+Game link: [thomasjnliu.github.io/CSC404-Game-Jam](https://thomasjnliu.github.io/CSC404-Game-Jam/)
 
 
 
