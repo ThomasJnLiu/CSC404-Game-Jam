@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
+    Transform tr;
     public float playerSpeed, jumpForce;
     [SerializeField] 
     bool grounded = true;
+    public GameObject respawnPoint;
 
     public GameObject plat1, plat2, plat3;
 
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        tr = GetComponent<Transform>();
         SetInactive();
     }
 
@@ -45,20 +48,17 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown("1")){
             SetInactive();
             plat1.SetActive(true);
+            plat2.SetActive(true);
         }
         if(Input.GetKeyDown("2")){
             SetInactive();
-
             plat2.SetActive(true);
-
-            Debug.Log('2');
+            plat3.SetActive(true);
         }
         if(Input.GetKeyDown("3")){
             SetInactive();
-
+            plat1.SetActive(true);
             plat3.SetActive(true);
-
-            Debug.Log('3');
         }
     }
 
@@ -68,4 +68,10 @@ public class PlayerController : MonoBehaviour
         plat3.SetActive(false);
     }
     
+
+    void OnTriggerEnter(Collider other){           
+        if(other.gameObject.tag == "DeathZone"){
+            tr.position = respawnPoint.transform.position;
+        } 
+    }
 }
