@@ -13,15 +13,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject plat1, plat2, plat3;
     
-    public GameManager GameManager;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
-        SetInactive();
-        GameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -49,26 +48,32 @@ public class PlayerController : MonoBehaviour
 
     public void PlatformControls(){
         if(Input.GetKeyDown("1")){
-            SetInactive();
-            plat1.SetActive(true);
-            plat2.SetActive(true);
+            SetActive("1");
         }
         if(Input.GetKeyDown("2")){
-            SetInactive();
-            plat2.SetActive(true);
-            plat3.SetActive(true);
+            SetActive("2");
         }
         if(Input.GetKeyDown("3")){
-            SetInactive();
-            plat1.SetActive(true);
-            plat3.SetActive(true);
+            SetActive("3");
         }
     }
 
-    public void SetInactive(){
-        plat1.SetActive(false);
-        plat2.SetActive(false);
-        plat3.SetActive(false);
+    public void SetActive(string option) {
+        switch (option) {
+            case "1":
+                gameManager.config[GameManager.PHASE_STATE] = GameManager.PhaseState.PHASE_1;
+                Debug.Log(gameManager.config[GameManager.PHASE_STATE]);
+                break;
+            case "2":
+                gameManager.config[GameManager.PHASE_STATE] = GameManager.PhaseState.PHASE_2;
+                break;
+            case "3":
+                gameManager.config[GameManager.PHASE_STATE] = GameManager.PhaseState.PHASE_3;
+                break;
+            default:
+                Debug.Log("Cannot do anything here");
+                break;
+        }
     }
     
 
@@ -83,7 +88,7 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.gameObject.name == "Sphere")
         {
             Destroy(collision.collider.gameObject);
-            GameManager.UpdateScore();
+            gameManager.UpdateScore();
         }
         
     }

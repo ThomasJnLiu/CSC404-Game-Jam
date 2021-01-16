@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Globals : MonoBehaviour
 {
-    public int score = 0;
-    public int lives = 3;
-    public static string PHASE_STATE = "phase_state";
-    public Dictionary<string, string> config;
-
     // Enum for state
     public class PhaseState {
         public static string NONE = "none";
@@ -16,7 +11,11 @@ public class GameManager : MonoBehaviour
         public static string PHASE_2 = "phase2";
         public static string PHASE_3 = "phase3";
     }
-    
+
+    public static string PHASE_STATE = "phase_state";
+
+    public  Dictionary<string, string> config;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,18 +27,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
-    
-    
-    public void UpdateScore()
-    {
-        score += 1;
-        // TODO : update screen 
-    }
-    
-    public void UpdateLive()
-    {
-        lives -= 1;
-        // TODO : update screen 
     }
 }

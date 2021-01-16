@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameManager gameManager;
 
+    // Enum for state
+    public enum MusicState {
+        MAIN_MENU,
+        FIGHT,
+        START,
+        PHASE_1,
+        PHASE_2,
+        PHASE_3
+    }
+
+    // Start is called before the first frame update
     private Dictionary<string, AudioClip> soundsDict = new Dictionary<string, AudioClip>(); //soundsPool
+    private MusicState state;
 
     private float bgmVolume = 1;
-
     private bool muteBGM = false;
 
     private AudioSource bgmAudio = null;
@@ -27,31 +38,58 @@ public class MusicController : MonoBehaviour
 
     void Start()
     {
-        PlayBGM("MainMenu");
+        state = MusicState.START;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKey("f"))
-        {
-            PlayBGM("Fight");
+    {   
+        string clipName = "";
+
+        if (state != MusicState.FIGHT) {
+            if (gameManager.config[GameManager.PHASE_STATE] == GameManager.PhaseState.PHASE_1) {
+                state = MusicState.PHASE_1;
+            } else if (gameManager.config[GameManager.PHASE_STATE] == GameManager.PhaseState.PHASE_2) {
+                state = MusicState.PHASE_2;
+            } else if (gameManager.config[GameManager.PHASE_STATE] == GameManager.PhaseState.PHASE_3) {
+                state = MusicState.PHASE_3;
+            } else {
+                state = MusicState.START;
+            }
         }
 
-        if (Input.GetKey("s"))
-        {
-            PlayBGM("Start");
+        Debug.Log(state);
+
+        switch (state) {
+            case MusicState.START:
+                clipName = "Start";
+                break;
+            case MusicState.FIGHT:
+                clipName = "Fight";
+                break;
+            case MusicState.PHASE_1:
+                clipName = "musicloop1";
+                break;
+            case MusicState.PHASE_2:
+                clipName = "musicloop2";
+                break;
+            case MusicState.PHASE_3:
+                clipName = "musicloop3";
+                break;
+            default:
+                clipName = "MainMenu";
+                break;
         }
 
-        if (Input.GetKey("m"))
-        {
-            PlayBGM("MainMenu");
-        }
+        PlayBGM(clipName);
     }
 
     public void PlayBGM(string name)
     {
-        Debug.Log(name + " played");
+        if (bgmAudio.clip == GetClipByName(name)) {
+            return;
+        }
 
         bgmAudio.loop = true;
         bgmAudio.clip = GetClipByName(name);
