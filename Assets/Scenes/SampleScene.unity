@@ -672,6 +672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 613779786}
+  - component: {fileID: 613779787}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -697,6 +698,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613779787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613779785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086901bed8e5949aeab96a37c356aadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: phase1
+  gameManager: {fileID: 0}
 --- !u!1 &783102371
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +940,7 @@ MonoBehaviour:
   plat1: {fileID: 613779785}
   plat2: {fileID: 1429307643}
   plat3: {fileID: 1002012505}
-  GameManager: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &1002012505
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1002012506}
+  - component: {fileID: 1002012507}
   m_Layer: 0
   m_Name: Pink
   m_TagString: Untagged
@@ -960,6 +976,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002012507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002012505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086901bed8e5949aeab96a37c356aadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: phase3
+  gameManager: {fileID: 0}
 --- !u!1 &1130414831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429307644}
+  - component: {fileID: 1429307645}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Untagged
@@ -1609,6 +1640,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429307645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429307643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086901bed8e5949aeab96a37c356aadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: phase2
+  gameManager: {fileID: 0}
 --- !u!1 &1492634865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2613,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889164347}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1965458881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965458883}
+  - component: {fileID: 1965458882}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1965458882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965458881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3256d787b478ad8469fa4970f267dc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+--- !u!4 &1965458883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965458881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.826707, y: 4.748449, z: -3.931831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1986178395
 GameObject:
   m_ObjectHideFlags: 0
