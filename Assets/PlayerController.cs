@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public GameObject plat1, plat2, plat3;
     
     public GameManager gameManager;
+
+    public Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +50,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void PlatformControls(){
-        if(Input.GetKeyDown("1")){
+        if(Input.GetKeyDown("j")){
             SetActive("1");
         }
-        if(Input.GetKeyDown("2")){
+        if(Input.GetKeyDown("k")){
             SetActive("2");
         }
-        if(Input.GetKeyDown("3")){
+        if(Input.GetKeyDown("l")){
             SetActive("3");
         }
     }
@@ -86,10 +89,12 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.name == "Sphere")
-        {
+        {        text.text =  "You Win!";
+
             Destroy(collision.collider.gameObject);
             gameManager.UpdateScore();
         }
+
         
     }
 }
